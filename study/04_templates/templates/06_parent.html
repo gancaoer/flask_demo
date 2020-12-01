@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}父模板{% endblock %}</title>
+</head>
+<body>
+    {% block header %}
+    <p>首页</p>
+    <p>项目管理</p>
+    <p>接口自动化</p>
+    {% endblock header%}
+    <hr>
+
+    {% block content %}
+        <li>
+            {% for item in range(5)%}
+<!--                默认情况下，块内语句是无法访问块外作用域中的变量的，可以加上scoped-->
+                <ul>{% block li scoped %} {{item}} {% endblock li %}</ul>
+            {% endfor %}
+        </li>
+    {% endblock content%}
+    <hr>
+
+    {% block footer %}
+    <p>赞助商</p>
+    <p>链接</p>
+    {% endblock footer%}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                    <p>{{ message }}</p>
+               {% endfor %}
+         {% endif %}
+    {% endwith %}
+
+    {% if 'username' not in session %}
+        您还没有登录，请先登录 <a href = "{{ url_for('login') }}">login</a>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form method="post" action="/">
+        {{ form.csrf_token }}
+        {{ form.mobile }}
+        {{ form.submit }}
+    </form>
+
+{#    消息闪现#}
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                    <p>{{ message }}</p>
+               {% endfor %}
+         {% endif %}
+    {% endwith %}
+
+</body>
+</html>

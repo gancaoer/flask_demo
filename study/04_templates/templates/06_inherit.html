@@ -1,0 +1,17 @@
+{% extends '06_parent.html' %}
+
+{% block title %}子模板{% endblock %}
+
+{% block header %}
+{{super()}}
+{% endblock header %}
+
+{% block content %}
+<p>子模板内容</p>
+<p>测试</p>
+{{super()}}
+{% endblock content %}
+
+{% block footer %}
+{{super()}}
+{% endblock footer %}

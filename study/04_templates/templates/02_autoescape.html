@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>
+        autoescape开启自动转义：
+        <!--访问http://127.0.0.1:5000/，页面显示<em>hello</em>-->
+        {% autoescape true %}
+            {{name}}
+        {% endautoescape%}
+    </p>
+    <p>
+        autoescape关闭自动转义：
+        <!--访问http://127.0.0.1:5000/，页面显示斜体 hello-->
+        {% autoescape false %}
+            {{sex}}
+        {% endautoescape%}
+    </p>
+    <p>
+        Markup关闭自动转义： {{age}}
+    </p>
+    <p>
+        safe关闭自动转义：{{place | safe}}
+    </p>
+</body>
+</html>

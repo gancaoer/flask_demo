@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--表单上传文件一定要加入 enctype="multipart/form-data 属性-->
+    <form method="post" action="/" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        {{ form.photo }}
+        {{ form.submit }}
+    </form>
+
+{#    消息闪现#}
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                    <p>{{ message }}</p>
+               {% endfor %}
+         {% endif %}
+    {% endwith %}
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--定义宏-->
+    {% macro input(type="text", value="", maxlength=20) %}
+        <input type="{{type}}" name="username" value="{{value}}" maxlength="{{maxlength}}">
+    {% endmacro %}
+
+    <!--使用宏-->
+    {{ input() }}     <!--不带参数-->
+    {{ input("submit", "提交") }}     <!--带参数-->
+
+<!--    从模板文件导入宏-->
+    {% from '05_base_macro.html' import list_users %}
+    {{ list_users(list_dict) }}
+    <hr>
+
+    <p>内置全局函数</p>
+    {% set user = dict(name='张三', sex='男', age=18)%}
+    <p>dict 生成字典型变量: {{ user | tojson | safe }}</p>
+
+    {% set sep = joiner('|') %}
+    <p>joiner:
+<!-- joiner：初始化一个分隔符，第一次调用时返回空字符串，再调用则返回分隔符，对于分隔循环中的内容很有帮助-->
+    {% for val in range(5) %}
+        {{sep()}}{{val}}
+    {% endfor %}
+    </p>
+
+    {% set cycle = cycler('odd', 'even') %}
+    <ul>
+<!-- cycle 在给定的序列中轮询-->
+    {% for num in range(10, 20, 2) %}
+        <li class="{{ cycle.next() }}">Number is "{{ num }}",
+        next line is "{{ cycle.current }}" line.</li>
+    {% endfor %}
+    </ul>
+
+    <p>自定义全局函数</p>
+    {{current_time()}}
+</body>
+</html>

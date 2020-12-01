@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>数字过滤器</p>
+    四舍五入：{{ 12.88 | round}}<br>
+    保留2位小数：{{ 12.9999 | round(2, 'floor')}}<br>
+    取绝对值：{{ -5.84 | abs }}<br>
+    <hr>
+
+    <p>字符串过滤器</p>
+    默认值：{{ name | default('no name', true) }}<br>
+    默认值：{{ name | d('no name', true) }}<br>
+    首字母大写：{{ 'this is a string.' | capitalize }}<br>
+    单词首字母大写：{{ 'this is a string.' | title }}<br>
+    全部大写：{{ 'Hello' | upper }}<br>
+    全部小写：{{ 'Hello' | lower }}<br>
+    去除前后空白字符：{{ '   Hel lo  ' | trim }}<br>
+    字符串反转：{{ 'Hello' | reverse }}<br>
+    字符串格式化输出：{{ '%s is %d' | format('张三', 18) }}<br>
+    <hr>
+
+    <p>列表过滤器</p>
+    列表第一个：{{ [4, 6, 1, 7] | first }}<br>
+    列表最后一个：{{ [4, 6, 1, 7] | last }}<br>
+    列表长度：{{ [4, 6, 1, 7] | length }}<br>
+    列表求和：{{ [4, 6, 1, 7] | sum }}<br>
+    列表升序：{{ [4, 6, 1, 7] | sort }}<br>
+    列表降序：{{ [4, 6, 1, 7] | sort(reverse=true) }}<br>
+    使用|连接列表：{{ ['ddf', 'ee6', 'hrt', 6] | join('|') }}<br>
+    字符大写：{{ ['ddf', 'ee6', 'hrt', 6] | upper }}<br>
+    字符小写：{{ ['RFf', 'eG6', 'hLt', 6] | lower }}<br>
+    <hr>
+
+    <p>字典列表过滤器</p>
+    按age降序：{{ list_dict | sort(attribute='age', reverse=true) }}<br>
+    按sex分组：{{ list_dict | groupby('age') }}<br>
+    取所有name用，连接：{{ list_dict | map(attribute='name') | join(',') }}<br>
+    <hr>
+
+    <p>内置过滤器 tojson</p>
+    {{ list_dict | first | tojson | safe }}
+    <hr>
+
+    <p>自定义过滤器</p>
+    {{ [1,6,2,7,4,8] | double_2 }}<br>
+    {{ [1,6,2,7,4,8] | sub(2,5) }}<br>
+    <hr>
+
+    <p>过滤整块语句</p>
+    {% filter upper %}
+        This is a Flask Jinja2 introduction.
+    {% endfilter %}
+
+</body>
+</html>

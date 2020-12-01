@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试器</title>
+</head>
+<body>
+    {% if person is defined %}
+        <p>defined-变量已定义</p>
+    {% endif %}
+
+    {% if age is undefined %}
+        <p>undefined-变量未定义</p>
+    {% endif %}
+
+    {% if 'HELLO' is upper %}
+        <p>upper检查字符都是大写</p>
+    {% endif %}
+
+    {% if 'er' is string %}
+        <p>string检查是否位字符串</p>
+    {% endif %}
+
+    {% if '895' is number %}
+        <p>number检查是否为数值</p>
+    {% endif %}
+
+    {% if 88 is even %}
+        <p>even检查是否为偶数</p>
+    {% endif %}
+
+    {% if 25 is odd %}
+        <p>odd检查是否为奇数</p>
+    {% endif %}
+
+    {% if [5,7,8] is iterable %}
+        <p>iterable检查是否可被迭代</p>
+    {% endif %}
+
+    {% if [5,7,8] is sequence %}
+        <p>sequence检查是否是序列</p>
+    {% endif %}
+
+    {% if person is mapping %}
+        <p>mapping检查是否为字典</p>
+    {% endif %}
+
+    {% if 99 is divisibleby(3) %}
+        <p>divisibleby检查是否能被整除</p>
+    {% endif %}
+
+    {% if 'hegegaeger' is start_with 'he' %}
+        <p>自定义测试器1</p>
+    {% endif %}
+    {% if 'hegegaeger' is end_with 'er' %}
+        <p>自定义测试器2</p>
+    {% endif %}
+</body>
+</html>

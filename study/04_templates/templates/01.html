@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--    变量赋值-->
+    {% set name='张三'%}
+
+<!--    条件控制语句-->
+    {% if name is none %}
+        <p>账号不能为空！</p>
+    {% elif name=='test' %}
+        <p>管理员账户：{{name}}</p>
+    {% else %}
+        <p>普通账户：{{name}}</p>
+    {% endif %}
+    <hr>
+
+<!--    for循环，默认情况下每个元素之间会有个空格，若要去掉空格，需要在for语句的最后、endfor语句的最前面加上一个-  -->
+    {% for i in range(4) -%}
+        {{i}}
+    {%- endfor %}
+    <hr>
+
+<!--    for循环和if语句结合使用-->
+    {% for i in range(4) if name is not none -%}
+        {{i}}
+    {% else %}
+        <p>for循环，name为空时输出</p>
+    {%- endfor %}
+
+<!--    for循环内置变量    -->
+
+    循环迭代计数（从1开始）
+    {% for i in range(5) %}
+        {{loop.index}}
+    {% endfor %}
+<br>
+    循环迭代计数（从0开始）
+    {% for i in range(5) %}
+        {{loop.index0}}
+    {% endfor %}
+<br>
+    循环迭代倒序计数（从len开始，到1结束）
+    {% for i in range(5) %}
+        {{loop.revindex}}
+    {% endfor %}
+<br>
+    循环迭代倒序计数（从len－1开始，到0结束）
+    {% for i in range(5) %}
+        {{loop.revindex0}}
+    {% endfor %}
+<br>
+    是否为循环的第一个元素
+    {% for i in range(5) %}
+        {{loop.first}}
+    {% endfor %}
+<br>
+    是否为循环的最后一个元素
+    {% for i in range(5) %}
+        {{loop.last}}
+    {% endfor %}
+<br>
+    循环序列中元素的个数
+    {% for i in range(5) %}
+        {{loop.length}}
+    {% endfor %}
+<br>
+
+    {% raw %}
+        {% for i in range(5) %}<br>
+            {{loop.length}}<br>
+        {% endfor %}<br>
+    {% endraw%}
+<br>
+<br>
+
+</body>
+</html>

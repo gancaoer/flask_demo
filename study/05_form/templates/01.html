@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% macro render_field(field) %}
+        <tr>
+          <td>{{ field.label }}</td>
+          <td>{{ field(**kwargs)|safe }}</td>
+          <td>{% if field.errors %}
+            <ul class=errors>
+            {% for error in field.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+          </td>
+        </tr>
+    {% endmacro %}
+
+
+    <form method="post" action="/">
+        <!--任何使用FlaskForm创建的表单发送请求，都会有CSRF的全部保护，在对应的template中HTML渲染表单时，可以加入form.csrf_token-->
+        <!--设置 csrf_token-->
+        {{ form.csrf_token }}
+        <!--Form 类有一个 hidden_tag 方法， 它会在一个隐藏的 DIV 标签中渲染任何隐藏的字段，包括 CSRF 字段-->
+        <!--{{ form.hidden_tag() }}-->
+         <table>
+            {{ render_field(form.username) }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.password) }}
+            {{ render_field(form.confirm) }}
+            {{ render_field(form.age) }}
+            {{ render_field(form.height) }}
+            {{ render_field(form.gender) }}
+            {{ render_field(form.birthday) }}
+            {{ render_field(form.job) }}
+            {{ render_field(form.hobby) }}
+            {{ render_field(form.description) }}
+            {{ render_field(form.accept_terms) }}
+        </table>
+        {{ form.submit }}
+    </form>
+
+</body>
+</html>

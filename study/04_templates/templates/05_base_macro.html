@@ -1,0 +1,8 @@
+{% macro list_users(users) %}
+    <table>
+        <tr><th>姓名</th><th>性别</th><th>年龄</th></tr>
+        {% for user in users %}
+            <tr><td>{{user.name}}</td><td>{{user.sex}}</td><td>{{user.age}}</td></tr>
+        {% endfor %}
+    </table>
+{% endmacro %}
