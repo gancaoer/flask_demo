@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table width="300" border="1" cellspacing="0" cellpadding="0">
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>描述</th>
+        </tr>
+        {% for user in li %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.desc }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <input type="button" value="新增" onclick=jump()><br>
+
+    <script>
+    function jump(){
+     window.location.href="insert";
+    }
+    </script>
+
+</body>
+</html>
